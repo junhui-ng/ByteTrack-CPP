@@ -20,6 +20,27 @@ STrack::STrack(std::vector<float> tlwh_, float score)
 	start_frame = 0;
 }
 
+STrack::STrack(std::vector<float> tlwh_, float score, int label)
+{
+	_tlwh.resize(4);
+	_tlwh.assign(tlwh_.begin(), tlwh_.end());
+	this->label = label;
+
+	is_activated = false;
+	track_id = 0;
+	state = TrackState::New;
+	
+	tlwh.resize(4);
+	tlbr.resize(4);
+
+	static_tlwh();
+	static_tlbr();
+	frame_id = 0;
+	tracklet_len = 0;
+	this->score = score;
+	start_frame = 0;
+}
+
 STrack::~STrack()
 {
 }

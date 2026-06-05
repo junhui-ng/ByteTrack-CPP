@@ -9,6 +9,7 @@ class STrack
 {
 public:
 	STrack(std::vector<float> tlwh_, float score);
+	STrack(std::vector<float> tlwh_, float score, int label);
 	~STrack();
 
 	std::vector<float> static tlbr_to_tlwh(std::vector<float> &tlbr);
@@ -28,6 +29,7 @@ public:
 	cv::Scalar get_color() const;
 
 public:
+	int label;
 	bool is_activated;
 	int track_id;
 	int state;

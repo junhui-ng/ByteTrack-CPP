@@ -109,8 +109,9 @@ void drawTracklets(cv::Mat& image, const std::vector<STrack>& tracklets)
             static_cast<int>(tracklet.tlwh[0]),
             static_cast<int>(tracklet.tlwh[1]) - 5
         );
+        std::string displayText = "[" + std::to_string(tracklet.label) + "] " + std::to_string(tracklet.track_id);
         cv::putText(image, 
-            std::to_string(tracklet.track_id), 
+            displayText, 
             textLocation, 
             cv::FONT_HERSHEY_SIMPLEX, 
             0.5, 
